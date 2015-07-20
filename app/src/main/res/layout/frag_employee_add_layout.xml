@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+                android:background="#ffdbd3d6">
+    <!--tools:context="androidhive.info.materialdesign.activity.HomeFragment">-->
+    <LinearLayout
+        android:id="@+id/llEmpFullNameAdd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/editTextEmpInputFullNameAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textPersonName"
+            android:padding="6dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textViewEmpFullNameAdd"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Full Name"
+            android:textColor="@color/textColorSecondary"
+            android:padding="2dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpUsernameAdd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/llEmpFullNameAdd"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/editTextEmpInputUsernameAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textPersonName"
+            android:padding="6dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textViewEmpUsernaeAdd"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Username"
+            android:textColor="@color/textColorSecondary"
+            android:padding="2dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpPasswordAdd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/llEmpUsernameAdd"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/editTextEmpInputPasswordAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textPersonName"
+            android:padding="6dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textViewEmpPasswordAdd"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Password"
+            android:textColor="@color/textColorSecondary"
+            android:padding="2dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpPhonedAdd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/llEmpPasswordAdd"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/editTextEmpInputPhoneAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textPersonName"
+            android:padding="6dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textViewEmpPhoneAdd"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Phone"
+            android:textColor="@color/textColorSecondary"
+            android:padding="2dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpEmailAdd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/llEmpPhonedAdd"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal">
+
+        <EditText
+            android:id="@+id/editTextEmpInputEmailAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textCapWords|textPersonName"
+            android:padding="6dp"
+            android:singleLine="true"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textViewEmpEmailAdd"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Email"
+            android:textColor="@color/textColorSecondary"
+            android:padding="2dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llEmpAdminAdd"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/llEmpEmailAdd"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emp_profile"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:buttonTint="@color/textColorSecondary"
+            android:id="@+id/checkBoxEmpAdd"
+            android:textColor="@color/textColorSecondary"
+            android:checked="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/llEmpAdminAdd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/button_Save_Emp_Add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_weight=".5"
+            android:text="@string/btn_save"
+            android:textColor="@color/textColorSecondary"
+            style="@android:style/Holo.Light.ButtonBar"/>
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:id="@+id/button_Cancel_Emp_Add"
+            style="@android:style/Holo.Light.ButtonBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_weight=".5"
+            android:text="@string/btn_cancel"
+            android:textColor="@color/textColorSecondary"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+

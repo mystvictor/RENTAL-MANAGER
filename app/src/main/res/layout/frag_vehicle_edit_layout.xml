@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="260dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:background="#ffffebee"
+                android:padding="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#212121"
+        android:id="@+id/ll2"
+        >
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageViewVehicleDetails"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_vehicle"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+    <EditText
+        android:id="@+id/editTextPlateVehicleEdit"
+        android:text="LOC-1111"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textAllCaps="true"
+        android:textSize="15sp"
+        android:textColor="@color/textColorSecondary"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/imageViewVehicleDetails"
+        android:layout_centerHorizontal="true"
+        style="@android:style/TextAppearance.DeviceDefault.Inverse"/>
+
+
+
+</RelativeLayout>

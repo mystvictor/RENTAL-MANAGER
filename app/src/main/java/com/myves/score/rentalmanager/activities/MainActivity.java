@@ -1,70 +1,134 @@
 package com.myves.score.rentalmanager.activities;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.myves.score.rentalmanager.R;
+import com.score.fragments.customer.FragmentCustomers;
+import com.score.fragments.FragmentDashboard;
+import com.score.fragments.FragmentDrawer;
+import com.score.fragments.rental.FragmentRentals;
+import com.score.fragments.vehicle.FragmentVehicleDetail;
+import com.score.fragments.vehicle.FragmentVehicles;
+import com.score.models.Vehicle;
+import com.score.rentalmanager.R;
 
+import java.util.Stack;
 
-public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
+public class MainActivity extends ActionBarActivity implements FragmentDrawer
+        .FragmentDrawerListener, FragmentVehicles.FragmentVehiclesListener {
+    private static String TAG = MainActivity.class.getSimpleName();
 
-    /**
-     * The serialization (saved instance state) Bundle key representing the
-     * current dropdown position.
-     */
-    private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+    private Toolbar mToolbar;
+    private FragmentDrawer mDrawerFragment;
+
+    private FragmentDashboard mDashboardFragment;
+    private FragmentRentals mRentalsFragment;
+    private FragmentCustomers mCustomersFragment;
+
+    private FragmentVehicles mVehiclesFragment;
+    private FragmentVehicleDetail mVehicleDetailsFragment;
+    private Vehicle mVehicle;
+
+    private Fragment mCurrentFragment;
+    private Stack<Fragment> mStackFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_layout);
 
-        // Set up the action bar to show a dropdown list.
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        // Set up the dropdown list navigation in the action bar.
-        actionBar.setListNavigationCallbacks(
-                // Specify a SpinnerAdapter to populate the dropdown list.
-                new ArrayAdapter<String>(
-                        actionBar.getThemedContext(),
-                        android.R.layout.simple_list_item_1,
-                        android.R.id.text1,
-                        new String[]{
-                                getString(R.string.title_section1),
-                                getString(R.string.title_section2),
-                                getString(R.string.title_section3),
-                        }),
-                this);
+        mDrawerFragment = (FragmentDrawer)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+        mDrawerFragment.setUp(R.id.fragment_navigation_drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
+        mDrawerFragment.setDrawerListener(this);
+
+
+
+        mStackFragments = new Stack<Fragment>();
+
+        displayView(0);
     }
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        // Restore the previously serialized current dropdown position.
-        if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
-            getSupportActionBar().setSelectedNavigationItem(
-                    savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
+    private void replaceFragment(Fragment fragment){
+        if(fragment.isVisible()){
+            return;
+        }else {
+            //String title = getString(R.string.toolbar_title);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_body, fragment)
+                    .addToBackStack(null).commit();
+            mCurrentFragment = fragment;
+            //getSupportActionBar().setTitle(title);
         }
     }
 
+    private void displayView(int position) {
+        mCurrentFragment = null;
+        String title = getString(R.string.toolbar_title);
+        switch (position){
+            case 0:
+                //Toast.makeText(this, "DASHBOARD CLICK", Toast.LENGTH_SHORT).show();
+                title = getString(R.string.title_dashboard);
+                mCurrentFragment = new FragmentVehicles();
+
+                break;
+            case 1:
+                //Toast.makeText(this, "RENTALS CLICK", Toast.LENGTH_SHORT).show();
+                title = getString(R.string.title_rentals);
+                mCurrentFragment = new FragmentCustomers();
+                break;
+            case 2:
+                //Toast.makeText(this, "CUSTOMERS CLICK", Toast.LENGTH_SHORT).show();
+                title = getString(R.string.title_customers);
+                mCurrentFragment = new FragmentRentals();
+                break;
+            default:
+                //Toast.makeText(this, "VEHICLES CLICK", Toast.LENGTH_SHORT).show();
+                title = getString(R.string.title_vehicles);
+                mCurrentFragment = new FragmentDashboard();
+                break;
+        }
+
+        replaceFragment(mCurrentFragment);
+    }
+
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        // Serialize the current dropdown position.
-        outState.putInt(STATE_SELECTED_NAVIGATION_ITEM,
-                getSupportActionBar().getSelectedNavigationIndex());
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public void onDrawerItemSelected(View view, int position) {
+        displayView(position);
+    }
+
+    @Override
+    public void onVehiclesListItemSelected(View view, int position, Vehicle vehicle){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        mVehicleDetailsFragment = FragmentVehicleDetail
+                .newInstanceOFragmentVehicleDetails(vehicle.getId());
+
+        mVehicleDetailsFragment.show(fragmentManager, mVehicleDetailsFragment.getTag());
+
+        /*getSupportFragmentManager().beginTransaction()
+                .show(mVehicleDetailsFragment)
+                .commit();*/
+
+        Toast.makeText(this, vehicle.getPlate() + " CLICKED", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -82,55 +146,19 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        switch (id){
+            case R.id.action_admin:
+                Toast.makeText(this, "ADMIN CLICK", Toast.LENGTH_SHORT).show();
+                return true;
 
-        return super.onOptionsItemSelected(item);
-    }
+            case R.id.action_settings:
+                Toast.makeText(this, "SETTINGS CLICK", Toast.LENGTH_SHORT).show();
+                return true;
 
-    @Override
-    public boolean onNavigationItemSelected(int position, long id) {
-        // When the given dropdown item is selected, show its contents in the
-        // container view.
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
-        return true;
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
+
 
 }

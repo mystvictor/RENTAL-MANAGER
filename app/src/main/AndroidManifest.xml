@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.myves.score.rentalmanager" >
+    package="com.score.rentalmanager" >
+
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- Permissions required to add contacts from a file -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Permissions to make phone calls, to call Customers -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- Permission to send email -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permissions to read SMS to change if contacts accept messages -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <!-- Permissions to import contacts from the android phone book -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- Permissions to check for internet connection -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="ANDROID.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="ANDROID.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="ANDROID.PERMISSION.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="ANDROID.PERMISSION.USE_CREDENTIALS"/>
+    <uses-permission android:name="ANDROID.PERMISSION.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="ANDROID.PERMISSION.WAKE_LOCK" />
+    <uses-permission android:name="ANDROID.PERMISSION.RECEIVE_MMS" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/RentalManagerTheme" >
         <activity
-            android:name=".activities.MainActivity"
-            android:label="@string/app_name" >
+            android:name="com.score.activities.MainActivity"
+            android:label="Rental Manager" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    android:configChanges="orientation"
+                    android:screenOrientation="portrait" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

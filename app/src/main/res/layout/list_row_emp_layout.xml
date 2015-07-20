@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:paddingBottom="2dp"
+    android:paddingRight="5dp"
+    android:paddingTop="2dp"
+    android:paddingLeft="5dp"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_128_user"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"/>
+    <TextView
+        android:id="@+id/textViewEmpFullName"
+        android:text="@string/emp_fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/textColorSecondary"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"
+        android:textStyle="normal"/>
+
+    <TextView
+        android:id="@+id/textViewEmpUsername"
+        android:text="@string/emp_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:textColor="@color/textColorSecondary"
+        android:layout_marginLeft="2dp"
+        android:layout_below="@+id/textViewEmpFullName"
+        android:layout_toEndOf="@+id/imageView"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emp_profile"
+        android:padding="5dp"
+        android:id="@+id/checkBoxEmp"
+        android:layout_below="@+id/textViewEmpUsername"
+        android:layout_alignStart="@+id/textViewEmpUsername"
+        android:textColor="@color/textColorSecondary"
+        />
+
+
+</RelativeLayout>
